@@ -45,3 +45,5 @@ animation = &"up"
 
 [node name="Collider" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_a3nfr")
+
+[connection signal="body_entered" from="." to="." method="OnBodyEntered"]

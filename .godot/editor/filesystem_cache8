@@ -1,5 +1,5 @@
 2a60927148abd1d33b818b535e306557
-::res://::1685305112
+::res://::1685306459
 icon.svg::CompressedTexture2D::2941732387506695111::1685303145::1685303150::1::::<><>::
 README.md::TextFile::-1::1685305043::0::1::::<><>::
 ::res://art/::1685304682
@@ -19,3 +19,6 @@ playerGrey_walk2.png::CompressedTexture2D::8550196133091122853::1683200759::1685
 FONTLOG.txt::TextFile::-1::1683200759::0::1::::<><>::
 LICENSE.txt::TextFile::-1::1683200759::0::1::::<><>::
 Xolonium-Regular.ttf::FontFile::6452743710665920498::1683200759::1685304682::1::::<><>::
+::res://scenes/::1685307028
+player.tscn::PackedScene::1071610385825899815::1685306646::0::1::::<><>::res://scenes/Player.cs<>uid://cynsl3ov7gvtd<>uid://bc4pvheb2joh6<>uid://dgubomjae3060<>uid://dt21qmfwirtcn
+Player.cs::CSharpScript::-1::1685307028::0::1::::<><>::

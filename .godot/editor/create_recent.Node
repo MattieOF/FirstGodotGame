@@ -1,5 +1,7 @@
+VisibleOnScreenNotifier2D
 CollisionShape2D
 AnimatedSprite2D
+RigidBody2D
 Area2D
 Button
 Control
