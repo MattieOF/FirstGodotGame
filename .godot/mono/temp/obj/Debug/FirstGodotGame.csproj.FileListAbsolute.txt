@@ -1,0 +1,17 @@
+C:\Dev\Godot\FirstGodotGame\.godot\mono\temp\bin\Debug\FirstGodotGame.deps.json
+C:\Dev\Godot\FirstGodotGame\.godot\mono\temp\bin\Debug\FirstGodotGame.runtimeconfig.json
+C:\Dev\Godot\FirstGodotGame\.godot\mono\temp\bin\Debug\FirstGodotGame.dll
+C:\Dev\Godot\FirstGodotGame\.godot\mono\temp\bin\Debug\FirstGodotGame.pdb
+C:\Dev\Godot\FirstGodotGame\.godot\mono\temp\bin\Debug\GodotSharp.dll
+C:\Dev\Godot\FirstGodotGame\.godot\mono\temp\bin\Debug\GodotSharpEditor.dll
+C:\Dev\Godot\FirstGodotGame\.godot\mono\temp\obj\Debug\FirstGodotGame.csproj.AssemblyReference.cache
+C:\Dev\Godot\FirstGodotGame\.godot\mono\temp\obj\Debug\FirstGodotGame.GeneratedMSBuildEditorConfig.editorconfig
+C:\Dev\Godot\FirstGodotGame\.godot\mono\temp\obj\Debug\FirstGodotGame.AssemblyInfoInputs.cache
+C:\Dev\Godot\FirstGodotGame\.godot\mono\temp\obj\Debug\FirstGodotGame.AssemblyInfo.cs
+C:\Dev\Godot\FirstGodotGame\.godot\mono\temp\obj\Debug\FirstGodotGame.csproj.CoreCompileInputs.cache
+C:\Dev\Godot\FirstGodotGame\.godot\mono\temp\obj\Debug\FirstGodotGame.csproj.CopyComplete
+C:\Dev\Godot\FirstGodotGame\.godot\mono\temp\obj\Debug\FirstGodotGame.dll
+C:\Dev\Godot\FirstGodotGame\.godot\mono\temp\obj\Debug\refint\FirstGodotGame.dll
+C:\Dev\Godot\FirstGodotGame\.godot\mono\temp\obj\Debug\FirstGodotGame.pdb
+C:\Dev\Godot\FirstGodotGame\.godot\mono\temp\obj\Debug\FirstGodotGame.genruntimeconfig.cache
+C:\Dev\Godot\FirstGodotGame\.godot\mono\temp\obj\Debug\ref\FirstGodotGame.dll
