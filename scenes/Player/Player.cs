@@ -2,14 +2,14 @@ using Godot;
 
 public partial class Player : Area2D
 {
+	[Signal]
+	public delegate void HitEventHandler();
+
 	[Export]
 	public int Speed = 400;
 
 	private AnimatedSprite2D _sprite;
 
-	[Signal]
-	public delegate void HitEventHandler();
-	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -56,7 +56,6 @@ public partial class Player : Area2D
 	
 	private void OnBodyEntered(PhysicsBody2D body)
 	{
-		GD.Print("Player ded");
 		Hide(); // Player disappears after being hit.
 		EmitSignal(SignalName.Hit);
 		// Must be deferred as we can't change physics properties on a physics callback.

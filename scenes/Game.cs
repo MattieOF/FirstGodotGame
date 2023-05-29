@@ -4,22 +4,24 @@ using Godot;
 
 public partial class Game : Node2D
 {
+	[Signal]
+	public delegate void ScoreUpdatedEventHandler(int newScore);
+
 	/// <summary>
 	/// Time that the escape key needs to be held before the game exits 
 	/// </summary>
 	[Export]
 	public float QuitTime = 1f;
-	
-	[Export]
-	public PackedScene EnemyScene { get; set; }
-	
-	[Export]
-	public PackedScene PlayerScene { get; set; }
+
+	[Export] 
+	public PackedScene EnemyScene, PlayerScene, HUDScene;
 
 	[Export, ExportCategory("Sounds")]
 	public AudioStream GameOverSound;
 	[Export]
 	public AudioStream Music;
+
+	public int Score = 0;
 
 	private Player _player;
 	private double _quitTime = 0;
@@ -27,12 +29,19 @@ public partial class Game : Node2D
 	private bool _gameStarted = false;
 	private Timer _enemySpawnTimer;
 	private Tween _deathMusicEffect;
+	private HUD _hud;
 	
 	public override void _Ready()
 	{
 		_player = PlayerScene.Instantiate<Player>();
 		AddChild(_player);
 		_player.Hit += OnPlayerHit;
+
+		_hud = HUDScene.Instantiate<HUD>();
+		_hud.Game = this;
+		_hud.Player = _player;
+		_hud.StartGame += StartGame;
+		AddChild(_hud);
 		
 		_enemySpawnTimer = GetNode<Timer>("EnemySpawnTimer");
 		_enemySpawnTimer.Stop();
@@ -58,8 +67,11 @@ public partial class Game : Node2D
 		_gameStarted = false;
 	}
 
-	public void StartGame()
+	private void StartGame()
 	{
+		Score = 0;
+		EmitSignal(SignalName.ScoreUpdated, 0);
+		
 		var viewportRect = GetViewportRect();
 		_player.Start(new Vector2(Mathf.Lerp(viewportRect.Position.X, viewportRect.End.X, 0.5f), Mathf.Lerp(viewportRect.Position.Y, viewportRect.End.Y, 0.5f)));
 		if (Math.Abs(_musicPlayer.PitchScale - 1) > 0.01)
@@ -75,6 +87,7 @@ public partial class Game : Node2D
 		_enemySpawnTimer.WaitTime = 2.5;
 		_enemySpawnTimer.Start();
 		
+		_hud.GameStarted();
 		_gameStarted = true;
 	}
 
@@ -94,7 +107,7 @@ public partial class Game : Node2D
 			StartGame();
 	}
 
-	public void OnSpawnEnemy()
+	private void OnSpawnEnemy()
 	{
 		if (!_player.Visible)
 			return;
@@ -107,6 +120,15 @@ public partial class Game : Node2D
 		mob.Position = mobSpawnLocation;
 		mob.SetTarget(_player);
 		
+		// Add score callback
+		mob.Destroyed += delegate
+		{
+			if (!_gameStarted)
+				return;
+			Score++;
+			EmitSignal(SignalName.ScoreUpdated, Score);
+		};
+
 		// Spawn the mob by adding it to the Main scene.
 		AddChild(mob);
 		

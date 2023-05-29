@@ -2,7 +2,10 @@ using Godot;
 
 public partial class Enemy : RigidBody2D
 {
-	[Export]
+	[Signal]
+	public delegate void DestroyedEventHandler();
+	
+	[Export, ExportCategory("Enemy Properties")]
 	public Vector2 SpeedRange = new(150, 250);
 
 	[Export]
@@ -28,7 +31,10 @@ public partial class Enemy : RigidBody2D
 	private void OnLeaveScreen()
 	{
 		if (_spawnTimer <= 0)
+		{
+			EmitSignal(SignalName.Destroyed);
 			QueueFree();
+		}
 	}
 
 	public void SetTarget(Node2D target)

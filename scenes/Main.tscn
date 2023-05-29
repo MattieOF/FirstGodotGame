@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://doa7fasyicy1w"]
+[gd_scene load_steps=7 format=3 uid="uid://doa7fasyicy1w"]
 
 [ext_resource type="Script" path="res://scenes/Game.cs" id="1_8h8yx"]
 [ext_resource type="PackedScene" uid="uid://41avic5jt0r3" path="res://scenes/Enemy/Enemy.tscn" id="2_1unrd"]
 [ext_resource type="PackedScene" uid="uid://pjdjcceuqwxb" path="res://scenes/Player/player.tscn" id="3_3y64v"]
+[ext_resource type="PackedScene" uid="uid://06m3h1aanljf" path="res://scenes/HUD/HUD.tscn" id="4_ce38c"]
 [ext_resource type="AudioStream" uid="uid://cvaywa7sauju3" path="res://art/gameover.wav" id="4_k8vrf"]
 [ext_resource type="AudioStream" uid="uid://dt7lr7gxut12x" path="res://art/House In a Forest Loop.ogg" id="5_q1v7g"]
 
@@ -10,6 +11,7 @@
 script = ExtResource("1_8h8yx")
 EnemyScene = ExtResource("2_1unrd")
 PlayerScene = ExtResource("3_3y64v")
+HUDScene = ExtResource("4_ce38c")
 GameOverSound = ExtResource("4_k8vrf")
 Music = ExtResource("5_q1v7g")
 

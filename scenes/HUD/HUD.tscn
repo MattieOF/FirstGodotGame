@@ -1,0 +1,79 @@
+[gd_scene load_steps=3 format=3 uid="uid://06m3h1aanljf"]
+
+[ext_resource type="Script" path="res://scenes/HUD/HUD.cs" id="1_0jbl5"]
+[ext_resource type="FontFile" uid="uid://cx600ms7qiwn7" path="res://fonts/Xolonium-Regular.ttf" id="2_g3odf"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_0jbl5")
+
+[node name="TopPanelBG" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(0, 80)
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 60.0
+grow_horizontal = 2
+color = Color(0.1, 0.1, 0.1, 0.4)
+
+[node name="MainText" type="Label" parent="TopPanelBG"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_g3odf")
+theme_override_font_sizes/font_size = 45
+text = "AVOID THE CREEPS (MATTIE EDITION)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MenuCenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.5
+offset_top = -15.5
+offset_right = 20.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MenuHFlow" type="HFlowContainer" parent="MenuCenterContainer"]
+layout_mode = 2
+
+[node name="PlayButton" type="Button" parent="MenuCenterContainer/MenuHFlow"]
+custom_minimum_size = Vector2(125, 70)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_g3odf")
+theme_override_font_sizes/font_size = 35
+text = "Play"
+
+[node name="PlayButtonHint" type="Label" parent="MenuCenterContainer/MenuHFlow"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_fonts/font = ExtResource("2_g3odf")
+theme_override_font_sizes/font_size = 10
+text = "(or press space)"
+horizontal_alignment = 1
+
+[node name="ExitButton" type="Button" parent="MenuCenterContainer/MenuHFlow"]
+custom_minimum_size = Vector2(125, 40)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_g3odf")
+theme_override_font_sizes/font_size = 35
+text = "Exit"
+
+[node name="ExitButtonHint" type="Label" parent="MenuCenterContainer/MenuHFlow"]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_fonts/font = ExtResource("2_g3odf")
+theme_override_font_sizes/font_size = 10
+text = "(or hold escape)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="MenuCenterContainer/MenuHFlow/PlayButton" to="." method="OnStartButtonPressed"]
+[connection signal="pressed" from="MenuCenterContainer/MenuHFlow/ExitButton" to="." method="Quit"]
