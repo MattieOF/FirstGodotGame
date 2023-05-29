@@ -1,5 +1,4 @@
 using Godot;
-using System;
 
 public partial class Enemy : RigidBody2D
 {
@@ -10,12 +9,10 @@ public partial class Enemy : RigidBody2D
 	public Vector2 AngleRadiansRange = new(0.35f, 0.35f);
 	
 	private float _spawnTimer = .5f;
-	private Timer _enemySpawnTimer;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		_enemySpawnTimer = GetNode<Timer>("EnemySpawnTimer");
 		var sprite = GetNode<AnimatedSprite2D>("Sprite");
 		string[] animations = sprite.SpriteFrames.GetAnimationNames();
 		sprite.Play(animations[GD.Randi() % animations.Length]);
