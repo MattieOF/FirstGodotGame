@@ -69,6 +69,9 @@ public partial class Game : Node2D
 
 	private void StartGame()
 	{
+		// Make all current mobs disappear
+		GetTree().CallGroup("enemies", Enemy.MethodName.Disappear);
+		
 		Score = 0;
 		EmitSignal(SignalName.ScoreUpdated, 0);
 		
