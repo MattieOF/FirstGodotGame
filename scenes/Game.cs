@@ -41,24 +41,16 @@ public partial class Game : Node2D
 
 	public void OnSpawnEnemy()
 	{
-		Enemy mob = EnemyScene.Instantiate<Enemy>();
-
-		var mobSpawnLocation = GetViewportRect().Grow(60).GetPointAlongPerimeter(GD.Randf());
+		if (!_player.Visible)
+			return;
 		
-		// Set the mob's direction perpendicular to the path direction.
-		var directionVector = (mobSpawnLocation - _player.Position).Normalized();
-		float direction = Mathf.Atan2(directionVector.X, directionVector.Y);
-
+		// Spawn enemy node
+		Enemy mob = EnemyScene.Instantiate<Enemy>();
+		
 		// Set the mob's position to a random location.
+		var mobSpawnLocation = GetViewportRect().Grow(60).GetPointAlongPerimeter(GD.Randf());
 		mob.Position = mobSpawnLocation;
-
-		// Add some randomness to the direction.
-		direction += (float)GD.RandRange(-Mathf.Pi / 6, Mathf.Pi / 6);
-		mob.Rotation = direction;
-
-		// Choose the velocity.
-		var velocity = new Vector2((float)GD.RandRange(150.0, 250.0), 0);
-		mob.LinearVelocity = velocity.Rotated(direction);
+		mob.SetTarget(_player);
 
 		// Spawn the mob by adding it to the Main scene.
 		AddChild(mob);
