@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://doa7fasyicy1w"]
+
+[ext_resource type="Script" path="res://scenes/Game.cs" id="1_8h8yx"]
+[ext_resource type="PackedScene" uid="uid://41avic5jt0r3" path="res://scenes/Enemy/Enemy.tscn" id="2_1unrd"]
+[ext_resource type="PackedScene" uid="uid://pjdjcceuqwxb" path="res://scenes/Player/player.tscn" id="3_3y64v"]
+
+[sub_resource type="Curve2D" id="Curve2D_7c7mq"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -640, -300, 0, 0, 0, 0, 640, -300, 0, 0, 0, 0, 640, 300, 0, 0, 0, 0, -640, 300, 0, 0, 0, 0, -640, -300)
+}
+point_count = 5
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_8h8yx")
+EnemyScene = ExtResource("2_1unrd")
+PlayerScene = ExtResource("3_3y64v")
+
+[node name="EnemySpawnTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="EnemySpawnPath" type="Path2D" parent="."]
+position = Vector2(640, 300)
+curve = SubResource("Curve2D_7c7mq")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="EnemySpawnPath"]
+position = Vector2(-640, -300)
+
+[connection signal="timeout" from="EnemySpawnTimer" to="." method="OnSpawnEnemy"]

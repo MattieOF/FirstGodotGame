@@ -1,2 +1,4 @@
 res://scenes/player.tscn
 res://scenes/Enemy/Enemy.tscn
+res://scenes/Player/player.tscn
+res://scenes/Main.tscn
